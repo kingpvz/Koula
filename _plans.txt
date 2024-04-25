@@ -1,0 +1,1 @@
+Add blue ring that moves randomly, you gotta catch it to get points.
