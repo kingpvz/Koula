@@ -122,3 +122,4 @@ Arrow Keys = Move, H = Help")
                   
 
 p = Program(bg="#222222", oval={"fill":"yellow","outline":"yellow"}, objects={"line": "white", "text": "white"}, level=1)
+input()
