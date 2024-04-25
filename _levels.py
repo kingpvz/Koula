@@ -19,22 +19,24 @@ Levels will always give you at least the amount of points you need. Basically tr
 
 def getLevel(id, t):
     if id<len(DATA) and id>=1:
-        sets = set((200, 200))
+        sets = set()
+        sets.add((200,200))
         data = {"b": DATA[id]["b"], "ovalm":{}, "ovalc":{}, "pos":{"m":{}, "c":{}}}
         for i in range(DATA[id]["m"]):
             while True:
-                x,y = 10*rnd(1,39),10*rnd(1,39)
+                x,y = 10*rnd(0,39),10*rnd(0,39)
                 if not (x,y) in sets: break
             data["ovalm"][i] = t.g.create_oval(x+3,y+3,x+11,y+11, fill="blue", outline="white")
             data["pos"]["m"][i] = (x,x+10,y+10,y)
             sets.add((x,y))
         for i in range(DATA[id]["c"]):
             while True:
-                x,y = 10*rnd(1,39),10*rnd(1,39)
+                x,y = 10*rnd(0,39),10*rnd(0,39)
                 if not (x,y) in sets: break
             data["ovalc"][i] = t.g.create_oval(x+3,y+3,x+11,y+11, fill="black", outline="red")
             data["pos"]["c"][i] = (x,x+10,y+10,y)
             sets.add((x,y))
+        print(sets)
         return data
     else:
         return {"b": 9999, "ovalm":{}, "ovalc":{}, "pos":{"m":{}, "c":{}}}
