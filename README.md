@@ -2,7 +2,7 @@
 ### Step 1: Download
 Basically download the entire repository.
 ### Step 2: Open `run.py`
-Simply double click `run.py` to open it.
+Double click `run.py` to open it.
 ### Step 3: Play
 Ignore the console window popping up and wait for the tkinter window to open.<br>
 Enjoy playing! You can get more insights on how to play in-game by pressing `H` to open help, or by simply reading the key binds at the bottom of the screen.
