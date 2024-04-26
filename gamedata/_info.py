@@ -1,4 +1,4 @@
-VERSION = "beta1.7"
+VERSION = "beta1.8"
 
 HELP = """Welcome to KOULA!
 (the best game ever for real)
@@ -15,7 +15,12 @@ BLACK (red outline) - Doom ball. Collect it to lose 1 point.
 Levels will always give you at least the amount of points you need. Basically try not to lose any. Simple as that!
 """
 
-CHANGELOG = """
+CHANGELOG = """\
+BETA 1.8
+Moved _levels.py
+Fixed bugs
+Removed the weird empty row in the changelog
+
 BETA 1.7
 Fixed bugs
 Added .gitignore to ignore useless files
@@ -23,9 +28,4 @@ Added .gitignore to ignore useless files
 BETA 1.6
 Moved all info files into a new folder for easier access.
 Removed useless dependencies.
-
-BETA 1.5
-Added custom level data
-- Levels no longer have to be randomly generated!
-- You can create levels with custom data now, check the documentation on the page you downloaded this game from!
 """

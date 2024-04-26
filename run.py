@@ -1,6 +1,6 @@
 import tkinter
 from tkinter import messagebox
-import _levels
+import gamedata._levels as _levels
 import gamedata._info as _info
 from random import randint as rnd
 
