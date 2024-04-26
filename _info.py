@@ -1,4 +1,4 @@
-VERSION = "beta1.4"
+VERSION = "beta1.5"
 
 HELP = """Welcome to KOULA!
 (the best game ever for real)
@@ -16,6 +16,11 @@ Levels will always give you at least the amount of points you need. Basically tr
 """
 
 CHANGELOG = """
+BETA 1.5
+Added custom level data
+- Levels no longer have to be randomly generated!
+- You can create levels with custom data now, check the documentation on the page you downloaded this game from!
+
 BETA 1.4
 Removed cursor
 Remade the entire level loader and runtime
@@ -28,8 +33,4 @@ Improved compatibility
 Added changelog
 - Hey that's what you are reading right now!
 Ball cursor
-
-BETA 1.2 (beta0.1.2)
-Added compatibility to IDLE
-- The program wouldn't start unless you press enter. This is now communicated.
 """
