@@ -116,8 +116,8 @@ Arrow Keys = Move, H = Help, C = Changelog")
           t.data["pts"] = 0
           t.g.itemconfig(t.object["counter"], text=str(t.data["pts"])+" / "+str(t.leveldata["pts"]))
       def deleteall(t):
-           for i in range(len(t.leveldata["ids"]["blue"])): t.g.delete(t.leveldata["ids"]["blue"][i])
-           for i in range(len(t.leveldata["ids"]["black"])): t.g.delete(t.leveldata["ids"]["black"][i])
+           for i in t.leveldata["ids"]["blue"]: t.g.delete(t.leveldata["ids"]["blue"][i])
+           for i in t.leveldata["ids"]["black"]: t.g.delete(t.leveldata["ids"]["black"][i])
            t.leveldata = {}
           
       def skipLevel(t,e):

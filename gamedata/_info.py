@@ -1,4 +1,4 @@
-VERSION = "beta1.8"
+VERSION = "beta1.9"
 
 HELP = """Welcome to KOULA!
 (the best game ever for real)
@@ -16,6 +16,9 @@ Levels will always give you at least the amount of points you need. Basically tr
 """
 
 CHANGELOG = """\
+BETA 1.9
+Fixed bugs
+
 BETA 1.8
 Moved _levels.py
 - And renamed to levels.py
@@ -25,8 +28,4 @@ Removed the weird empty row in the changelog
 BETA 1.7
 Fixed bugs
 Added .gitignore to ignore useless files
-
-BETA 1.6
-Moved all info files into a new folder for easier access.
-Removed useless dependencies.
 """
