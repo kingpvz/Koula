@@ -6,7 +6,7 @@ class Program:
       def __init__(t, **s):
             t.s = s
             t.w = tkinter.Tk()
-            t.w.title("KOULA beta0.1")
+            t.w.title("KOULA beta0.1.2")
             t.w.iconbitmap("_favicon.ico")
             t.g = tkinter.Canvas(bg=s["bg"],width=400,height=525)
             t.dx = 0
@@ -21,7 +21,6 @@ class Program:
             t.g.bind_all('r', t.restartLevel)
             t.g.bind_all('h', t.showHelp)
             t.id = t.g.create_oval(203,203,211,211, fill=s["oval"]["fill"],outline=s["oval"]["outline"])
-            t.colission = {"xl":200, "xr":210, "yt":210, "yb": 200}
             
             t.data = {"pts": 0, "level": s["level"]-1}
             
@@ -122,4 +121,5 @@ Arrow Keys = Move, H = Help")
                   
 
 p = Program(bg="#222222", oval={"fill":"yellow","outline":"yellow"}, objects={"line": "white", "text": "white"}, level=1)
+print("If you are running this in IDLE, press the ENTER key on your keyboard to run the program.")
 input()

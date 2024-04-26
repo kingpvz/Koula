@@ -36,7 +36,6 @@ def getLevel(id, t):
             data["ovalc"][i] = t.g.create_oval(x+3,y+3,x+11,y+11, fill="black", outline="red")
             data["pos"]["c"][i] = (x,x+10,y+10,y)
             sets.add((x,y))
-        print(sets)
         return data
     else:
         return {"b": 9999, "ovalm":{}, "ovalc":{}, "pos":{"m":{}, "c":{}}}
