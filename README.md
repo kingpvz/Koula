@@ -39,7 +39,7 @@ When you include this key, level settings such as amount of blue balls, amount o
 The syntax is very simple. Every command needs to be on a new line or separated by semicolons.<br>
 Every command is made out of multiple statements and values separated by spaces. Since different commands can have different statements, each command in this documentation will be accompanied with its statement syntax.
 ### `at/put` Command
-This is the only command at this time. You can use it to put a ball at a specified coordinate.
+This is the only command at this time. You can use it to put a ball at a specified coordinate.<br>
 Syntax: `at X Y put BALLTYPE` &nbsp;&nbsp;&nbsp; Example: `at 5 17 put blue`<br>
 Syntax explanation:
 - `at` = label to begin this command
