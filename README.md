@@ -9,8 +9,8 @@ Enjoy playing! You can get more insights on how to play in-game by pressing `H` 
 <br><br>
 # HOW TO CREATE CUSTOM LEVELS?
 ### Step 1: Open `gamedata` folder
-This folder is located in the same directory as `run.py`. Inside, you can find `_levels.py`, which stores nearly all the level data, except for non-random levels, whose data is located in `_leveldata.py`.
-### Step 2: Open `_levels.py` in edit mode
+This folder is located in the same directory as `run.py`. Inside, you can find `levels.py`, which stores nearly all the level data, except for non-random levels, whose data is located in `_leveldata.py`.
+### Step 2: Open `levels.py` in edit mode
 Ignore all the code besides the `DATA` list.
 ### Step 2: Add a new level to the `DATA` list
 Simply add a comma and add a new entry. The entry needs to follow this syntax: `{"KEY": VALUE, "KEY2": VALUE2}`<br>

@@ -18,6 +18,7 @@ Levels will always give you at least the amount of points you need. Basically tr
 CHANGELOG = """\
 BETA 1.8
 Moved _levels.py
+- And renamed to levels.py
 Fixed bugs
 Removed the weird empty row in the changelog
 
