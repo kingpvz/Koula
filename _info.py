@@ -1,4 +1,4 @@
-VERSION = "beta1.3"
+VERSION = "beta1.4"
 
 HELP = """Welcome to KOULA!
 (the best game ever for real)
@@ -16,6 +16,10 @@ Levels will always give you at least the amount of points you need. Basically tr
 """
 
 CHANGELOG = """
+BETA 1.4
+Removed cursor
+Remade the entire level loader and runtime
+
 BETA 1.3
 Added position editing to levels
 - You are now able to customize spawn location of your player ball.
@@ -28,7 +32,4 @@ Ball cursor
 BETA 1.2 (beta0.1.2)
 Added compatibility to IDLE
 - The program wouldn't start unless you press enter. This is now communicated.
-
-BETA 1.1 (beta0.1)
-Fixed bugs
 """

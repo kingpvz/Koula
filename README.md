@@ -11,7 +11,7 @@ Enjoy playing! You can get more insights on how to play in-game by pressing `H` 
 ### Step 1: Open `_levels.py` in edit mode
 Ignore all the code besides the `DATA` list.
 ### Step 2: Add a new level to the `DATA` list
-Simply add a comma and add a new entry. The entry needs to follow this syntax: `{"blue": BLU, "black": BLA, "pts": PTS, "dpos": (X,Y)}`<br>
+Simply add a comma and add a new entry. The entry needs to follow this syntax: `{"blue": BLU, "black": BLA, "pts": PTS, "pos": (X,Y)}`<br>
 In the entry, replace all `TRI`-letter codes with your level settings.<br>
 <ul>
 <li>BLU is the amount of blue balls.</li>
@@ -20,7 +20,7 @@ In the entry, replace all `TRI`-letter codes with your level settings.<br>
 <li>X,Y are the spawn coordinates (0<=X,Y<=39)</li>
 </ul>
 
-Example: `{"blue": 10, "black": 3, "pts": 8, "dpos": (10,17)}` creates a level with 10 blue balls and 3 black balls. You need to get 8 points to win this level.
+Example: `{"blue": 10, "black": 3, "pts": 8, "pos": (10,17)}` creates a level with 10 blue balls and 3 black balls. You need to get 8 points to win this level.
 You start at coordinates X:10;Y:17<br>
 Note: The example is actually level 3 from the game.
 ### Step 3: Save and Play

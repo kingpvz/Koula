@@ -1,10 +1,17 @@
 import tkinter
 from tkinter import messagebox
 import _levels, _info
+from random import randint as rnd
+from sys import platform
 
 class Movable:
     def __init__(t, p, **s):
-        t.m = p.g.create_oval(103,103,111,111, fill="#222222", outline="blue", width=3)
+        t.id = p.g.create_oval(103,103,111,111, outline="#7777FF", width=2)
+        t.position = {"xl":100, "xr":110, "yt":110, "yb":100}
+        
+    def move(t,p):
+         x,y = rnd(-1,1), rnd(-1,1)
+         p.g.move(t.id, x*10, y*10)
 
 class Program:
       def __init__(t, **s):
@@ -12,10 +19,14 @@ class Program:
             t.w = tkinter.Tk()
             t.w.title("KOULA "+_info.VERSION)
             t.w.iconbitmap("_favicon.ico")
-            t.g = tkinter.Canvas(bg=s["bg"],width=400,height=525,cursor="dot")
+            t.w.config(cursor="none")
+            t.g = tkinter.Canvas(bg=s["bg"],width=400,height=525,cursor="none")
+            
             t.dx = 0
             t.dy = 0
             t.g.pack()
+            t.id = t.g.create_oval(203,203,211,211, fill=s["oval"]["fill"],outline=s["oval"]["outline"])
+            
             t.g.bind_all('<Left>', t.vlavo)
             t.g.bind_all('<Right>', t.vpravo)
             t.g.bind_all('<Up>', t.nahor)
@@ -25,7 +36,6 @@ class Program:
             t.g.bind_all('r', t.restartLevel)
             t.g.bind_all('h', t.showHelp)
             t.g.bind_all('c', t.showChangelog)
-            t.id = t.g.create_oval(203,203,211,211, fill=s["oval"]["fill"],outline=s["oval"]["outline"])
             
             t.data = {"pts": 0, "level": s["level"]-1}
             
@@ -42,51 +52,48 @@ Arrow Keys = Move, H = Help, C = Changelog")
             t.newLevel()
 
       def hni(t):
-            t.colission["xl"]+=t.dx; t.colission["xr"]+=t.dx; t.colission["yt"]+=t.dy; t.colission["yb"]+=t.dy
-            t.g.move(t.id, t.dx, t.dy)
+            t.leveldata["tile"][t.position["x"]][t.position["y"]]["data"] = "empty"
+            t.position["x"]+=t.dx; t.position["y"]+=t.dy
+            t.g.move(t.id, t.dx*10, t.dy*10)
             t.dx = 0
             t.dy = 0
-            t.getTouch()
+            for i in t.leveldata["ids"]["movable"]:
+                i.move(t)
+            t.touch((t.position["x"], t.position["y"]))
+            t.leveldata["tile"][t.position["x"]][t.position["y"]]["data"] = "player"
+                
       def vlavo(t,e):
-            if not t.colission["xl"]<=0:
-                  t.dx=-10
+            if not t.position["x"]<=0:
+                  t.dx = -1
             t.hni()            
       def vpravo(t,e):
-            if not t.colission["xr"]>=400:
-                  t.dx = 10
+            if not t.position["x"]>=39:
+                  t.dx = 1
             t.hni()
       def nahor(t,e):
-            if not t.colission["yb"]<=0:
-                  t.dy = -10
+            if not t.position["y"]<=0:
+                  t.dy = -1
             t.hni()
       def dole(t,e):
-            if not t.colission["yt"]>=400:
-                  t.dy = 10
+            if not t.position["y"]>=39:
+                  t.dy = 1
             t.hni()
             
-      def colide(t, pos1, pos2):
-            if pos2[0]>=pos1[0] and pos2[1]<=pos1[1] and pos2[2]>=pos1[2] and pos2[3]<=pos1[3]: return True
-            else: return False
-      def getTouch(t):
+      def getObj(t, x, y):
+            return t.leveldata["tile"][x][y]
+      def touch(t, pos):
           try:
-            for i in range(len(t.leveldata["pos"]["blue"])):
-                if t.colide(t.leveldata["pos"]["blue"][i], (t.colission["xl"],t.colission["xr"],t.colission["yt"],t.colission["yb"])):
-                    t.leveldata["pos"]["blue"][i] = (-1, -1, -1, -1)
-                    t.g.delete(t.leveldata["ovalblue"][i])
-                    t.cup()
+            tileobj = t.getObj(pos[0], pos[1])
+            if not tileobj["data"] == "empty":
+                 if tileobj["data"] == "blue":
+                     tileobj["data"] = "empty"
+                     t.g.delete(t.leveldata["ids"]["blue"][tileobj["id"]])
+                     t.cup()
+                 if tileobj["data"] == "black":
+                     tileobj["data"] = "empty"
+                     t.g.delete(t.leveldata["ids"]["black"][tileobj["id"]])
+                     t.cdn()
           except KeyError: pass
-          for i in range(len(t.leveldata["pos"]["black"])):
-              try:
-                if t.colide(t.leveldata["pos"]["black"][i], (t.colission["xl"],t.colission["xr"],t.colission["yt"],t.colission["yb"])):
-                    t.leveldata["pos"]["black"][i] = (-1, -1, -1, -1)
-                    t.g.delete(t.leveldata["ovalblack"][i])
-                    t.cdn()
-              except KeyError: pass
-                  
-      def deleteall(t):
-           for i in range(len(t.leveldata["pos"]["blue"])): t.g.delete(t.leveldata["ovalblue"][i])
-           for i in range(len(t.leveldata["pos"]["black"])): t.g.delete(t.leveldata["ovalblack"][i])
-           t.leveldata = {}
                   
       def cup(t,b=1):
             t.data["pts"] += b
@@ -103,12 +110,15 @@ Arrow Keys = Move, H = Help, C = Changelog")
       def newLevel(t):
           t.data["level"]+=1
           t.leveldata = _levels.getLevel(t.data["level"], t)
-          t.g.moveto(t.id, t.leveldata["dpos"][0]+2, t.leveldata["dpos"][1]+2)
-          t.colission = {"xl":t.leveldata["dpos"][0], "xr":t.leveldata["dpos"][0]+10, "yt":t.leveldata["dpos"][1]+10, "yb": t.leveldata["dpos"][1]}
+          t.g.moveto(t.id, t.leveldata["pos"][0]*10+2, t.leveldata["pos"][1]*10+2)
+          t.position = {"x":t.leveldata["pos"][0], "y":t.leveldata["pos"][1]}
           t.g.itemconfig(t.object["level"], text=t.data["level"])
           t.data["pts"] = 0
           t.g.itemconfig(t.object["counter"], text=str(t.data["pts"])+" / "+str(t.leveldata["pts"]))
-          t.leveldata["MOVING"] = "a"
+      def deleteall(t):
+           for i in range(len(t.leveldata["ids"]["blue"])): t.g.delete(t.leveldata["ids"]["blue"][i])
+           for i in range(len(t.leveldata["ids"]["black"])): t.g.delete(t.leveldata["ids"]["black"][i])
+           t.leveldata = {}
           
       def skipLevel(t,e):
            t.deleteall()
