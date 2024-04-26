@@ -26,7 +26,7 @@ Example: `{"blue": 10, "black": 3, "pts": 8, "pos": (10,17)}` creates a level wi
 You start at coordinates X:10;Y:17<br>
 Note: The example is actually level 3 from the game.
 ### Step 3: Save and Play
-Save `_levels.py` and launch the game. In game, press `S` to skip the levels until you reach yours.
+Save `levels.py` and launch the game. In game, press `S` to skip the levels until you reach yours.
 <br><br>
 # WHAT IS THE PURPOSE OF THIS?
 School.
