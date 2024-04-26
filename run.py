@@ -1,8 +1,8 @@
 import tkinter
 from tkinter import messagebox
-import _levels, _info
+import _levels
+import gamedata._info as _info
 from random import randint as rnd
-from sys import platform
 
 class Movable:
     def __init__(t, p, **s):
@@ -18,7 +18,7 @@ class Program:
             t.s = s
             t.w = tkinter.Tk()
             t.w.title("KOULA "+_info.VERSION)
-            t.w.iconbitmap("_favicon.ico")
+            t.w.iconbitmap("gamedata/_favicon.ico")
             t.w.config(cursor="none")
             t.g = tkinter.Canvas(bg=s["bg"],width=400,height=525,cursor="none")
             

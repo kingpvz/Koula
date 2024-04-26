@@ -56,4 +56,4 @@ at 16 35 put black; at 15 27 put blue; at 38 39 put black
 at 30 10 put blue
 ```
 Would produce this output:
-<img src="_example.jpg" width="400" height="400"/>
+<img src="gamedata/_example.jpg" width="400" height="400"/>

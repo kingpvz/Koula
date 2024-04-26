@@ -1,5 +1,5 @@
 from random import randint as rnd
-import _leveldata
+import gamedata._leveldata as _leveldata
 import re
 
 DATA = ["datastorage", {"blue": 1, "pts": 1}, {"pts": 10, "pos": (22,22), "data": _leveldata.lv2}, {"blue": 10, "black": 3, "pts": 8, "pos": (10,17)}, {"blue": 5, "black": 10, "pts": 5},\
