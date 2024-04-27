@@ -1,9 +1,10 @@
 from random import randint as rnd
 import gamedata._leveldata as _leveldata
 import re
+from gamedata._classes import *
 
 DATA = ["datastorage", {"blue": 1, "pts": 1}, {"pts": 10, "pos": (22,22), "data": _leveldata.lv2}, {"blue": 10, "black": 3, "pts": 8, "pos": (10,17)}, {"blue": 5, "black": 10, "pts": 5},\
-       {"blue": 10, "black": 50, "pts": 9, "pos": (3,10)}, {"pts": 5, "data": _leveldata.customlevel}]
+       {"blue": 10, "black": 50, "pts": 9, "pos": (3,10)}]
 
 VALIDVALUES = {"blue", "black"}
 
@@ -86,36 +87,23 @@ def createLevel(base, script, pos, t):
     for i in script:
         cmd = i.split()
         id = script.index(i)
-        try:
-            if len(cmd) != 5: raise SyntaxError(0)
-            if cmd[0] != "at": raise SyntaxError(1)
-            if not cmd[1].isdigit(): raise ValueError(0)
-            if not cmd[2].isdigit(): raise ValueError(1)
-            if cmd[3] != "put": raise SyntaxError(2)
-        except SyntaxError as e:
-            if e == 0: print("Fatal Syntax Error at line", id+1)
-            if e == 1: print("Unknown Command at line", id+1)
-            if e == 2: print("'put' separator omited at line", id+1)
-            break
-        except ValueError as e:
-            if e == 0: print("X coordinate at line", id+1, "is not valid.")
-            if e == 1: print("Y coordinate at line", id+1, "is not valid.")
-            break
-        else:
+        if cmd[0] == "at":
             try:
-                if not 0<=int(cmd[1])<=39: raise ValueError(0)
-                if not 0<=int(cmd[2])<=39: raise ValueError(1)
-                if (int(cmd[1]), int(cmd[2])) in sets: raise ValueError(2)
+                if len(cmd) != 5: raise ValueError("Fatal Syntax Error at line "+str(id+1))
+                if not cmd[1].isdigit(): raise ValueError("X coordinate at line "+str(id+1)+" is not valid.")
+                if not cmd[2].isdigit(): raise ValueError("Y coordinate at line "+str(id+1)+" is not valid.")
+                if cmd[3] != "put": raise ValueError("'put' separator omited at line "+str(id+1))
             except ValueError as e:
-                if e == 0: print("X coordinate is out of bounds at line", id+1)
-                if e == 1: print("Y coordinate is out of bounds at line", id+1)
-                if e == 2: print("Line", id+1, "placement is already occupied.")
+                print(e)
                 break
             else:
                 try:
-                    if cmd[4] not in VALIDVALUES: raise ValueError(0)
+                    if not 0<=int(cmd[1])<=39: raise ValueError("X coordinate is out of bounds at line "+str(id+1))
+                    if not 0<=int(cmd[2])<=39: raise ValueError("Y coordinate is out of bounds at line "+str(id+1))
+                    if (int(cmd[1]), int(cmd[2])) in sets: raise ValueError("Line "+str(id+1)+" placement is already occupied.")
+                    if cmd[4] not in VALIDVALUES: raise ValueError("Can't put", cmd[4], "into the level as it doesn't exist. Faulty line:", id+1)
                 except ValueError as e:
-                    if e == 0: print("Can't put", cmd[4], "into the level as it doesn't exist. Faulty line:", id+1)
+                    print(e)
                     break
                 else:
                     tiles[int(cmd[1])][int(cmd[2])]["data"] = cmd[4]
@@ -123,6 +111,30 @@ def createLevel(base, script, pos, t):
                     sets.add((int(cmd[1]),int(cmd[2])))
                     if cmd[4] == "blue": ids[cmd[4]][id] = t.g.create_oval(int(cmd[1])*10+3,int(cmd[2])*10+3,int(cmd[1])*10+11,int(cmd[2])*10+11, fill="blue", outline="white")
                     if cmd[4] == "black": ids[cmd[4]][id] = t.g.create_oval(int(cmd[1])*10+3,int(cmd[2])*10+3,int(cmd[1])*10+11,int(cmd[2])*10+11, fill="black", outline="red")
+        elif cmd[0] == "put":
+            try:
+                if len(cmd) != 5: raise ValueError("Fatal Syntax Error at line "+str(id+1))
+                if not cmd[3].isdigit(): raise ValueError("X coordinate at line "+str(id+1)+" is not valid.")
+                if not cmd[4].isdigit(): raise ValueError("Y coordinate at line "+str(id+1)+" is not valid.")
+                if cmd[2] != "at": raise ValueError("'at' separator omited at line "+str(id+1))
+            except ValueError as e:
+                print(e)
+                break
+            else:
+                try:
+                    if not 0<=int(cmd[3])<=39: raise ValueError("X coordinate is out of bounds at line "+str(id+1))
+                    if not 0<=int(cmd[4])<=39: raise ValueError("Y coordinate is out of bounds at line "+str(id+1))
+                    if (int(cmd[3]), int(cmd[4])) in sets: raise ValueError("Line "+str(id+1)+" placement is already occupied.")
+                    if cmd[1] not in VALIDVALUES: raise ValueError("Can't put", cmd[1], "into the level as it doesn't exist. Faulty line:", id+1)
+                except ValueError as e:
+                    print(e)
+                    break
+                else:
+                    tiles[int(cmd[3])][int(cmd[4])]["data"] = cmd[1]
+                    tiles[int(cmd[3])][int(cmd[4])]["id"] = id
+                    sets.add((int(cmd[3]),int(cmd[4])))
+                    if cmd[1] == "blue": ids[cmd[1]][id] = t.g.create_oval(int(cmd[3])*10+3,int(cmd[4])*10+3,int(cmd[3])*10+11,int(cmd[4])*10+11, fill="blue", outline="white")
+                    if cmd[1] == "black": ids[cmd[1]][id] = t.g.create_oval(int(cmd[3])*10+3,int(cmd[4])*10+3,int(cmd[3])*10+11,int(cmd[4])*10+11, fill="black", outline="red")
     return ids,tiles
         
                     

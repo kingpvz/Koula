@@ -38,15 +38,25 @@ When you include this key, level settings such as amount of blue balls, amount o
 ### Syntax
 The syntax is very simple. Every command needs to be on a new line or separated by semicolons.<br>
 Every command is made out of multiple statements and values separated by spaces. Since different commands can have different statements, each command in this documentation will be accompanied with its statement syntax.
-### `at/put` Command
+### `at/put` | `put/at` Command
 This is the only command at this time. You can use it to put a ball at a specified coordinate.<br>
 Syntax: `at X Y put BALLTYPE` &nbsp;&nbsp;&nbsp; Example: `at 5 17 put blue`<br>
-Syntax explanation:
+Alternative Syntax: `put BALLTYPE at X Y` &nbsp;&nbsp;&nbsp; Example: `put blue at 5 17`<br>
+Syntax Explanation:
 - `at` = label to begin this command
 - `X` = X coordinate (0<=X<=39)
 - `Y` = Y coordinate (0<=Y<=39)
 - `put` = label to separate entries
 - `BALLTYPE` = type of ball to put on set coordinates
+
+<br>
+
+Alternative Syntax Explanation:
+- `put` = label to begin this command
+- `BALLTYPE` = type of ball to put on set coordinates
+- `at` = label to separate entries
+- `X` = X coordinate (0<=X<=39)
+- `Y` = Y coordinate (0<=Y<=39)
 ### Ball Types
 - `blue` = Blue Ball, White Outline (+1 Point)
 - `black` = Black Ball, Red Outline (-1 Point)
@@ -54,8 +64,8 @@ Syntax explanation:
 This script:
 ```
 at 7 15 put blue; at 8 15 put blue; at 9 15 put blue
-at 16 35 put black; at 15 27 put blue; at 38 39 put black
-at 30 10 put blue
+at 16 35 put black; at 15 27 put blue; put black at 38 39
+put blue at 30 10
 ```
 Would produce this output:  
 <img src="gamedata/_example.jpg" width="400" height="400"/>

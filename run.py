@@ -2,16 +2,8 @@ import tkinter
 from tkinter import messagebox
 import gamedata.levels as _levels
 import gamedata._info as _info
-from random import randint as rnd
-
-class Movable:
-    def __init__(t, p, **s):
-        t.id = p.g.create_oval(103,103,111,111, outline="#7777FF", width=2)
-        t.position = {"x":10, "y": 10}
-        
-    def move(t,p):
-         x,y = rnd(-1,1), rnd(-1,1)
-         p.g.move(t.id, x*10, y*10)
+from gamedata._classes import *
+import gamedata._messages as _messages
 
 class Program:
       def __init__(t, **s):
@@ -20,7 +12,7 @@ class Program:
             t.w.title("KOULA "+_info.VERSION)
             t.w.iconbitmap("gamedata/_favicon.ico")
             t.w.config(cursor="none")
-            t.g = tkinter.Canvas(bg=s["bg"],width=400,height=525,cursor="none")
+            t.g = tkinter.Canvas(bg=s["bg"],width=400,height=550,cursor="none")
             
             t.dx = 0
             t.dy = 0
@@ -48,7 +40,9 @@ class Program:
             t.object["helpText"] = t.g.create_text(10, 490, anchor="nw", font="arial 10", fill=s["objects"]["text"], text="Key Binds:")
             t.object["help"] = t.g.create_text(80, 490, anchor="nw", font="arial 10", fill=s["objects"]["text"], text="R = Restart, S = Skip Level, A = Previous Level\n\
 Arrow Keys = Move, H = Help, C = Changelog")
+            t.object["message"] = t.g.create_text(200,525, anchor="n", text="...", font="bahnschrift 13", fill=s["objects"]["text"])
             
+            t.msg(_messages.randomMessage())
             t.newLevel()
 
       def hni(t):
@@ -105,6 +99,7 @@ Arrow Keys = Move, H = Help, C = Changelog")
             t.g.itemconfig(t.object["counter"], text=str(t.data["pts"])+" / "+str(t.leveldata["pts"]))
             if t.data["pts"] >= t.leveldata["pts"]:
                  t.deleteall()
+                 t.msg("Great job on beating level "+str(t.data["level"]))
                  t.newLevel()
       
       def newLevel(t):
@@ -124,9 +119,12 @@ Arrow Keys = Move, H = Help, C = Changelog")
            t.deleteall()
            t.newLevel()
       def previousLevel(t,e):
-          t.deleteall()
-          t.data["level"] -= 2
-          t.newLevel()
+          if t.data["level"] > 1:
+            t.deleteall()
+            t.data["level"] -= 2
+            t.newLevel()
+          else:
+              t.restartLevel(0) 
       def restartLevel(t,e):
           t.deleteall()
           t.data["level"] -= 1
@@ -136,7 +134,9 @@ Arrow Keys = Move, H = Help, C = Changelog")
           messagebox.showinfo("Help", _info.HELP)
       def showChangelog(t,e):
           messagebox.showinfo("Changelog", _info.CHANGELOG)
-                  
+      
+      def msg(t, txt):
+          t.g.itemconfig(t.object["message"], text=txt)
 
 p = Program(bg="#222222", oval={"fill":"yellow","outline":"yellow"}, objects={"line": "white", "text": "white"}, level=1)
 print("If you are running this in IDLE, press the ENTER key on your keyboard to run the program.")
