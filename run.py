@@ -29,7 +29,7 @@ class Program:
             t.g.bind_all('h', t.showHelp)
             t.g.bind_all('c', t.showChangelog)
             
-            t.data = {"pts": 0, "level": s["level"]-1}
+            t.data = {"pts": 0, "level": s["level"]-1, "backlevel": 0}
             
             t.object = {}
             t.object["line"] = t.g.create_line(0, 405, 405, 405, fill=s["objects"]["line"])
@@ -118,17 +118,24 @@ Arrow Keys = Move, H = Help, C = Changelog")
       def skipLevel(t,e):
            t.deleteall()
            t.newLevel()
+           t.data["backlevel"] = 0
+           t.msg("Level skipped!")
       def previousLevel(t,e):
           if t.data["level"] > 1:
             t.deleteall()
             t.data["level"] -= 2
             t.newLevel()
+            t.data["backlevel"] = 0
+            t.msg("Previous level loaded!")
           else:
-              t.restartLevel(0) 
+              t.data["backlevel"] += 1
+              t.msg(_messages.getLevelBack(t.data["backlevel"]))
       def restartLevel(t,e):
           t.deleteall()
           t.data["level"] -= 1
           t.newLevel()
+          t.msg("Level restarted!")
+          t.data["backlevel"] = 0
           
       def showHelp(t,e):
           messagebox.showinfo("Help", _info.HELP)

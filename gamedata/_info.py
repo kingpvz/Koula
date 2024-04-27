@@ -1,4 +1,4 @@
-VERSION = "beta2.0"
+VERSION = "beta2.2"
 
 HELP = """Welcome to KOULA!
 (the best game ever for real)
@@ -16,6 +16,19 @@ Levels will always give you at least the amount of points you need. Basically tr
 """
 
 CHANGELOG = """\
+BETA 2.2
+Moved some things around
+Made series into functions
+
+BETA 2.1
+Added messages with progression to levelback
+- This basically means that when you wil attempt to go back to a level that doesn't exist (level 0, level -1, etc.) you'll get a series of messages to stop you.
+- It doesn't do much but I don't care
+- Yes I do that instead of coding in new features
+- No I do not care, I am not procrastinating either
+- Ok maybe I am procrastinating but I don't care
+New game load messages
+
 BETA 2.0
 Cleaned up folders and files
 Fixed previous level getting you into negative levels
@@ -25,13 +38,4 @@ Added alternative syntax for at/put command
 - Now you can write a put/at command too!
 Added a random message to welcome you
 - Every time you begin the game there is a random message to greet you!
-
-BETA 1.9
-Fixed bugs
-
-BETA 1.8
-Moved _levels.py
-- And renamed to levels.py
-Fixed bugs
-Removed the weird empty row in the changelog
 """
