@@ -7,6 +7,7 @@ DATA = ["datastorage", {"blue": 1, "pts": 1}, {"pts": 10, "pos": (22,22), "data"
        {"blue": 10, "black": 50, "pts": 9, "pos": (3,10)}]
 
 VALIDVALUES = {"blue", "black"}
+VALIDIDS = {"blue":{}, "black": {}, "movable": {}}
 
 def getLevel(id, t):
     if id<len(DATA) and id>=1:
@@ -16,7 +17,7 @@ def getLevel(id, t):
                 sets = set()
                 sets.add((DATA[id]["pos"][0],DATA[id]["pos"][1]))
                 tiles = createTile()
-                data = {"pts": DATA[id]["pts"], "ids":{"blue":{}, "black": {}, "movable": {}}, "tile":tiles, "pos":(DATA[id]["pos"][0],DATA[id]["pos"][1])}
+                data = {"pts": DATA[id]["pts"], "ids":VALIDIDS, "tile":tiles, "pos":(DATA[id]["pos"][0],DATA[id]["pos"][1])}
                 data["tile"][DATA[id]["pos"][0]][DATA[id]["pos"][1]]["data"] = "player"
                 if "data" in DATA[id]:
                     DATA[id]["blue"], DATA[id]["black"] = 0,0
@@ -41,15 +42,15 @@ def getLevel(id, t):
             else:
                 tiles = createTile()
                 tiles[20][20]["data"] = "player"
-                return {"pts": 99999, "ids":{"blue": {}, "black": {}, "movable":{}}, "tile":tiles, "pos": (20,20)}
+                return {"pts": 99999, "ids":VALIDIDS, "tile":tiles, "pos": (20,20)}
         else:
             tiles = createTile()
             tiles[20][20]["data"] = "player"
-            return {"pts": 99999, "ids":{"blue": {}, "black": {}, "movable":{}}, "tile":tiles, "pos": (20,20)}
+            return {"pts": 99999, "ids":VALIDIDS, "tile":tiles, "pos": (20,20)}
     else:
         tiles = createTile()
         tiles[20][20]["data"] = "player"
-        return {"pts": 99999, "ids":{"blue": {}, "black": {}, "movable":{}}, "tile":tiles, "pos": (20,20)}
+        return {"pts": 99999, "ids":VALIDIDS, "tile":tiles, "pos": (20,20)}
         
 
 def createTile():
