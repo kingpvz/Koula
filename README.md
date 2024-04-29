@@ -63,7 +63,8 @@ Alternative Syntax Explanation:
 ### Script Example
 This script:
 ```
-at 7 15 put blue; at 8 15 put blue; at 9 15 put blue
+at 7 15 put blue; at 8 15 put blue;
+at 9 15 put blue
 at 16 35 put black; at 15 27 put blue; put black at 38 39
 put blue at 30 10
 ```
