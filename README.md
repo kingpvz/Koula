@@ -32,7 +32,7 @@ Save `levels.py` and launch the game. In game, press `S` to skip the levels unti
 School.
 <br><br>
 # CUSTOM LEVEL DATA
-Custom level data is a multiline string that uses a modified [SIMPLE QUERY](https://github.com/kingpvz/sqlt) syntax to edit level data.<br>
+Custom level data is a multiline string that uses a modified [SIMPLE QUERY](https://github.com/kingpvz/SimpleQuery) syntax to edit level data.<br>
 When you include this key, level settings such as amount of blue balls, amount of black balls, etc. will be ignored.
 ## DOCUMENTATION
 ### Syntax
