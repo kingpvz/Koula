@@ -1,4 +1,5 @@
 # HOW TO PLAY?
+(JUMP TO DOWNLOAD INSTRUCTIONS)[#step-1-download]
 ### REQUIREMEMNTS
 These are the minimum requirements to run the game:  
 - Python 3.8 or later
