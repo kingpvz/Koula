@@ -1,1 +1,2 @@
 Add blue ring that moves randomly, you gotta catch it to get points.
+UTILIZE TKINTER'S CANVAS.AFTER ASYNCHRONOUS FUNCTION!!!
