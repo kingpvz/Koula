@@ -1,4 +1,19 @@
 # HOW TO PLAY?
+[JUMP TO DOWNLOAD INSTRUCTIONS](#step-1-download)
+### REQUIREMEMNTS
+These are the minimum requirements to run the game:  
+- Python 3.8 or later
+- 256MB RAM or better
+- 2.7GHz CPU or faster
+- 8MB free memory
+- 450x700 pixel monitor or bigger
+    
+These are reccomended specifications to run the game:  
+- Python 3.11
+- 512MB RAM or more
+- 2.7GHz CPU or faster
+- 10MB free memory
+- 1280x720, 1600x900 or 1920x1080 pixel monitor
 ### Step 1: Download
 Basically download the entire repository.
 ### Step 2: Open `run.py`
@@ -63,7 +78,8 @@ Alternative Syntax Explanation:
 ### Script Example
 This script:
 ```
-at 7 15 put blue; at 8 15 put blue; at 9 15 put blue
+at 7 15 put blue; at 8 15 put blue;
+at 9 15 put blue
 at 16 35 put black; at 15 27 put blue; put black at 38 39
 put blue at 30 10
 ```
