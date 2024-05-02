@@ -1,9 +1,7 @@
 from random import randint as rnd
 
 _MESSAGES = """
-Much worse than other games!
-Try not to die of boredom!
-Seriously this game is bad.
+The best game I've made! And the only one too!
 Made by that one guy!
 Made with SimpleQuery!
 You can make your own levels!
@@ -14,9 +12,11 @@ Do not press Q on the first level!
 For all the ball lovers!
 You'll love these colorful balls!
 Deaf people friendly!
-Boredom for entire family!
 Your friends will love these balls!
 I know you like when the balls move.
+Best bullethell on GitHub! (Self-Proclaimed)
+Some levels are randomly generated!
+Full of eastereggs!
 
 Has up to 7 levels!
 Contains whopping 4 game mechanics!

@@ -4,6 +4,7 @@ import gamedata.levels as _levels
 import gamedata._info as _info
 from gamedata._classes import *
 import gamedata._messages as _messages
+from random import randint as rnd
 
 class Program:
       def __init__(t, **s):
@@ -32,6 +33,7 @@ class Program:
             t.g.bind_all('r', t.restartLevel)
             t.g.bind_all('h', t.showHelp)
             t.g.bind_all('c', t.showChangelog)
+            t.g.bind_all('p', t.colorEasterEgg)
             
             t.data = {"pts": 0, "level": s["level"]-1, "backlevel": 0}
             
@@ -44,6 +46,8 @@ class Program:
             t.object["helpText"] = t.g.create_text(10, 485, anchor="nw", font="arial 10", fill=s["objects"]["text"], text="Key Binds:")
             t.object["help"] = t.g.create_text(80, 485, anchor="nw", font="arial 10", fill=s["objects"]["text"], text="H = Controls and Help, C = Changelog")
             t.object["message"] = t.g.create_text(200,505, anchor="n", text="...", font="bahnschrift 13", fill=s["objects"]["text"])
+            
+            t.EASTEREGG = False
             
             t.msg(_messages.randomMessage())
             t.newLevel()
@@ -157,6 +161,17 @@ class Program:
       
       def msg(t, txt):
           t.g.itemconfig(t.object["message"], text=txt)
+          
+      def colorEasterEgg(t,e):
+          if t.EASTEREGG: t.EASTEREGG = False
+          else: t.EASTEREGG = True
+          t.colorChanger()
+          
+      def colorChanger(t):
+          t.g.itemconfig(t.id, fill="#"+str(rnd(10,99))+str(rnd(10,99))+str(rnd(10,99)), outline="#FFFF"+str(rnd(10,50)))
+          if t.EASTEREGG:t.g.after(50, t.colorChanger)
+          else:t.g.itemconfig(t.id, fill="#FFFF00", outline="#FFFF00")
+             
 
 p = Program(bg="#222222", objects={"line": "white", "text": "white"}, level=1)
 print("If you are running this in IDLE, press the ENTER key on your keyboard to run the program.")

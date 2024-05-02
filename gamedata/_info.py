@@ -1,4 +1,4 @@
-VERSION = "beta3.0"
+VERSION = "beta3.1"
 
 HELP = """Welcome to KOULA!
 (the best game ever for real)
@@ -18,6 +18,10 @@ Levels will always give you at least the amount of points you need. Basically tr
 """
 
 CHANGELOG = """\
+BETA 3.1
+Changed some game messages
+c:
+
 BETA 3.0
 Added moving balls (2 new ball types)
 - They move randomly!
@@ -42,13 +46,4 @@ Cleaned up files
 BETA 2.2
 Moved some things around
 Made series into functions
-
-BETA 2.1
-Added messages with progression to levelback
-- This basically means that when you wil attempt to go back to a level that doesn't exist (level 0, level -1, etc.) you'll get a series of messages to stop you.
-- It doesn't do much but I don't care
-- Yes I do that instead of coding in new features
-- No I do not care, I am not procrastinating either
-- Ok maybe I am procrastinating but I don't care
-New game load messages
 """
