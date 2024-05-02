@@ -1,4 +1,4 @@
-QUICK LINKS: [WIKI](gamedata/other/WIKI.md)
+QUICK LINKS: [**WIKI**](gamedata/other/WIKI.md) | [**CUSTOM LEVELS**](#how-to-create-custom-levels)
 
 # HOW TO PLAY?
 [JUMP TO DOWNLOAD INSTRUCTIONS](#step-1-download)
@@ -36,6 +36,8 @@ In the entry, replace all `KEY`s with data you want to change and `VALUE`s with 
 - "pts" = This is the amount of points required to win the level.
 - "blue" = Specifies the amount of blue balls to spawn. Default = 0
 - "black" = Specifies the amount of black balls to spawn. Default = 0
+- "mblue" = Specifies the amount of moving blue balls to spawn. Default = 0
+- "mred" = Specifies the amount of moving red balls to spawn. Default = 0
 - "pos" = Specifies the spawn position of player. Default = (20,20)
 - "data" = Custom level data. <b>[READ MORE HERE](#custom-level-data)</b>
 
@@ -55,20 +57,11 @@ When you include this key, level settings such as amount of blue balls, amount o
 ### Syntax
 The syntax is very simple. Every command needs to be on a new line or separated by semicolons.<br>
 Every command is made out of multiple statements and values separated by spaces. Since different commands can have different statements, each command in this documentation will be accompanied with its statement syntax.
-### `at/put` | `put/at` Command
+### `put/at` Command
 This is the only command at this time. You can use it to put a ball at a specified coordinate.<br>
-Syntax: `at X Y put BALLTYPE` &nbsp;&nbsp;&nbsp; Example: `at 5 17 put blue`<br>
-Alternative Syntax: `put BALLTYPE at X Y` &nbsp;&nbsp;&nbsp; Example: `put blue at 5 17`<br>
+Syntax: `put BALLTYPE at X Y` &nbsp;&nbsp;&nbsp; Example: `put blue at 5 17`<br>
+
 Syntax Explanation:
-- `at` = label to begin this command
-- `X` = X coordinate (0<=X<=39)
-- `Y` = Y coordinate (0<=Y<=39)
-- `put` = label to separate entries
-- `BALLTYPE` = type of ball to put on set coordinates
-
-<br>
-
-Alternative Syntax Explanation:
 - `put` = label to begin this command
 - `BALLTYPE` = type of ball to put on set coordinates
 - `at` = label to separate entries
@@ -77,13 +70,20 @@ Alternative Syntax Explanation:
 ### Ball Types
 - `blue` = Blue Ball, White Outline (+1 Point)
 - `black` = Black Ball, Red Outline (-1 Point)
+- `mblue` = Moving Blue Ring (+3 Points)
+  - You can add an optional speed parameter by including parenthesis with a number in between.
+  - Example: `mblue(7)`
+  - If no parameter is provided (`mblue`), the speed is 10
+  - It is not recommended to add a speed greater than 100, as it will most likely lag the game a lot.
+- `mred` = Moving Red Ring (-3 Points)
+  - Same parameters as `mblue` (`mred(7)`)
 ### Script Example
 This script:
 ```
-at 7 15 put blue; at 8 15 put blue;
-at 9 15 put blue
-at 16 35 put black; at 15 27 put blue; put black at 38 39
+put blue at 7 15; put blue at 8 15;
+put blue at 9 15
+put black at 16 35; put blue at 15 27; put black at 38 39
 put blue at 30 10
 ```
 Would produce this output:  
-<img src="gamedata/_example.jpg" width="400" height="400"/>
+<img src="gamedata/other/_example.jpg" width="400" height="400"/>

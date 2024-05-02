@@ -10,15 +10,16 @@ You can make your own levels!
 Made using python! (Snake, not language)
 No balls were harmed while making this game.
 Your ball was originally red.
-Do not press A on the first level!
+Do not press Q on the first level!
 For all the ball lovers!
 You'll love these colorful balls!
 Deaf people friendly!
 Boredom for entire family!
 Your friends will love these balls!
+I know you like when the balls move.
 
-Has up to 5 levels!
-Contains whopping 2 game mechanics!
+Has up to 7 levels!
+Contains whopping 4 game mechanics!
 """
 
 def randomMessage():
