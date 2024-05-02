@@ -1,4 +1,4 @@
-QUICK LINKS: [**WIKI**](gamedata/other/WIKI.md) | [**CUSTOM LEVELS**](#how-to-create-custom-levels)
+QUICK LINKS: [**WIKI**](https://kingpvz.github.io/projects/koula/wiki) | [**CUSTOM LEVELS**](#how-to-create-custom-levels) | [**CHANGELOG**](https://kingpvz.github.io/files?file=koulachangelog.txt)
 
 # HOW TO PLAY?
 [JUMP TO DOWNLOAD INSTRUCTIONS](#step-1-download)

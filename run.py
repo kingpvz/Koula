@@ -5,6 +5,7 @@ import gamedata._info as _info
 from gamedata._classes import *
 import gamedata._messages as _messages
 from random import randint as rnd
+import webbrowser
 
 class Program:
       def __init__(t, **s):
@@ -33,6 +34,7 @@ class Program:
             t.g.bind_all('r', t.restartLevel)
             t.g.bind_all('h', t.showHelp)
             t.g.bind_all('c', t.showChangelog)
+            t.g.bind_all('v', t.openWiki)
             t.g.bind_all('p', t.colorEasterEgg)
             
             t.data = {"pts": 0, "level": s["level"]-1, "backlevel": 0}
@@ -157,7 +159,10 @@ class Program:
       def showHelp(t,e):
           messagebox.showinfo("Help", _info.HELP)
       def showChangelog(t,e):
-          messagebox.showinfo("Changelog", _info.CHANGELOG)
+          webbrowser.open("https://kingpvz.github.io/files?file=koulachangelog.txt", new=2)
+      def openWiki(t,e):
+          webbrowser.open("https://kingpvz.github.io/projects/koula/wiki", new=2)
+           
       
       def msg(t, txt):
           t.g.itemconfig(t.object["message"], text=txt)
