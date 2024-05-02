@@ -9,6 +9,7 @@ These are the minimum requirements to run the game:
 - 2.7GHz CPU or faster
 - 8MB free memory
 - 450x700 pixel monitor or bigger
+- Keyboard
     
 These are reccomended specifications to run the game:  
 - Python 3.11
