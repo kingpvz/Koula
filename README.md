@@ -1,3 +1,5 @@
+QUICK LINKS: [WIKI](gamedata/other/WIKI.md)
+
 # HOW TO PLAY?
 [JUMP TO DOWNLOAD INSTRUCTIONS](#step-1-download)
 ### REQUIREMEMNTS
