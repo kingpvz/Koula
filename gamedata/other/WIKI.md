@@ -3,7 +3,7 @@ This wiki contains all the balls from this game and teaches you the basics of wh
 <br>
 ## Yellow Ball
 This is your player ball. You can move it around. You use it to collect other balls.
-# Blue Ball
+## Blue Ball
 Properties: Blue Fill, White Outline, Static
 Points: +1
 This is the ball you want to collect, as it increases the amount of points you have.
