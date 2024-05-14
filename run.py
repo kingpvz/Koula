@@ -14,7 +14,7 @@ class Program:
             t.w.title("KOULA "+_info.VERSION)
             t.w.iconbitmap("gamedata/other/_favicon.ico")
             t.w.config(cursor="none")
-            t.g = tkinter.Canvas(bg=s["bg"],width=400,height=535,cursor="none")
+            t.g = tkinter.Canvas(bg=s["bg"],width=400,height=535,cursor="dot")
             
             t.dx = 0
             t.dy = 0
@@ -32,9 +32,6 @@ class Program:
             t.g.bind_all('e', t.skipLevel)
             t.g.bind_all('q', t.previousLevel)
             t.g.bind_all('r', t.restartLevel)
-            t.g.bind_all('h', t.showHelp)
-            t.g.bind_all('c', t.showChangelog)
-            t.g.bind_all('v', t.openWiki)
             t.g.bind_all('p', t.colorEasterEgg)
             
             t.data = {"pts": 0, "level": s["level"]-1, "backlevel": 0}
@@ -45,9 +42,25 @@ class Program:
             t.object["counter"] = t.g.create_text(95, 415, anchor="nw", text="0 / 1", font="arial 20", fill=s["objects"]["text"])
             t.object["levelText"] = t.g.create_text(10, 450, anchor="nw", text="Level:", font="arial 20", fill=s["objects"]["text"])
             t.object["level"] = t.g.create_text(95, 450, anchor="nw", text="1", font="arial 20", fill=s["objects"]["text"])
-            t.object["helpText"] = t.g.create_text(10, 485, anchor="nw", font="arial 10", fill=s["objects"]["text"], text="Key Binds:")
-            t.object["help"] = t.g.create_text(80, 485, anchor="nw", font="arial 10", fill=s["objects"]["text"], text="H = Controls and Help, C = Changelog")
-            t.object["message"] = t.g.create_text(200,505, anchor="n", text="...", font="bahnschrift 13", fill=s["objects"]["text"])
+            t.object["message"] = t.g.create_text(200,510, anchor="n", text="...", font="bahnschrift 13", fill=s["objects"]["text"])
+
+            t.object["buttons"] = {}
+            t.object["buttons"]["keybinds"] = t.g.create_rectangle(15,485,100,505, fill="#cccccc", outline="#000000")
+            t.object["buttons"]["keybindsText"] = t.g.create_text(57,495, text="Controls", font="arial 10", fill="black")
+            t.g.tag_bind(t.object["buttons"]["keybinds"], '<ButtonPress-1>', t.showHelp)
+            t.g.tag_bind(t.object["buttons"]["keybindsText"], '<ButtonPress-1>', t.showHelp)
+            t.object["buttons"]["changelog"] = t.g.create_rectangle(110,485,195,505, fill="#cccccc", outline="#000000")
+            t.object["buttons"]["changelogText"] = t.g.create_text(152,495, text="Changelog", font="arial 10", fill="black")
+            t.g.tag_bind(t.object["buttons"]["changelog"], '<ButtonPress-1>', t.showChangelog)
+            t.g.tag_bind(t.object["buttons"]["changelogText"], '<ButtonPress-1>', t.showChangelog)
+            t.object["buttons"]["wiki"] = t.g.create_rectangle(205,485,290,505, fill="#cccccc", outline="#000000")
+            t.object["buttons"]["wikiText"] = t.g.create_text(247,495, text="Wiki", font="arial 10", fill="black")
+            t.g.tag_bind(t.object["buttons"]["wiki"], '<ButtonPress-1>', t.openWiki)
+            t.g.tag_bind(t.object["buttons"]["wikiText"], '<ButtonPress-1>', t.openWiki)
+            t.object["buttons"]["edit"] = t.g.create_rectangle(300,485,385,505, fill="#cccccc", outline="#000000")
+            t.object["buttons"]["editText"] = t.g.create_text(342,495, text="Editor", font="arial 10", fill="black")
+            t.g.tag_bind(t.object["buttons"]["edit"], '<ButtonPress-1>', t.openEditor)
+            t.g.tag_bind(t.object["buttons"]["editText"], '<ButtonPress-1>', t.openEditor)
             
             t.EASTEREGG = False
             
@@ -162,6 +175,9 @@ class Program:
           webbrowser.open("https://kingpvz.github.io/files?file=koulachangelog.txt", new=2)
       def openWiki(t,e):
           webbrowser.open("https://kingpvz.github.io/projects/koula/wiki", new=2)
+      def openEditor(t,e):
+          import gamedata.editor as _editor
+          _editor.Editor()
            
       
       def msg(t, txt):
