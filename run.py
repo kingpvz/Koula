@@ -6,6 +6,10 @@ from gamedata._classes import *
 import gamedata._messages as _messages
 from random import randint as rnd
 import webbrowser
+import sys
+
+import ctypes
+ctypes.windll.user32.ShowWindow( ctypes.windll.kernel32.GetConsoleWindow(), 6 )
 
 class Program:
       def __init__(t, **s):
@@ -15,6 +19,9 @@ class Program:
             t.w.iconbitmap("gamedata/other/_favicon.ico")
             t.w.config(cursor="none")
             t.g = tkinter.Canvas(bg=s["bg"],width=400,height=535,cursor="dot")
+            t.currenteditor = None
+            t.w.resizable(0,0)
+            t.w.protocol("WM_DELETE_WINDOW", t.die)
             
             t.dx = 0
             t.dy = 0
@@ -176,8 +183,10 @@ class Program:
       def openWiki(t,e):
           webbrowser.open("https://kingpvz.github.io/projects/koula/wiki", new=2)
       def openEditor(t,e):
+          t.w.iconify()
           import gamedata.editor as _editor
-          _editor.Editor()
+          if t.currenteditor: t.currenteditor.die()
+          t.currenteditor = _editor.Editor(t.w)
            
       
       def msg(t, txt):
@@ -192,6 +201,10 @@ class Program:
           t.g.itemconfig(t.id, fill="#"+str(rnd(10,99))+str(rnd(10,99))+str(rnd(10,99)), outline="#FFFF"+str(rnd(10,50)))
           if t.EASTEREGG:t.g.after(50, t.colorChanger)
           else:t.g.itemconfig(t.id, fill="#FFFF00", outline="#FFFF00")
+         
+      def die(t):
+          t.w.destroy()
+          sys.exit()
              
 
 p = Program(bg="#222222", objects={"line": "white", "text": "white"}, level=1)

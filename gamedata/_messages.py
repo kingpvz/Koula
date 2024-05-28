@@ -1,9 +1,8 @@
 from random import randint as rnd
 
 _MESSAGES = """
-The best game I've made! And the only one too!
+The best game I've ever made!
 Made by that one guy!
-Made with SimpleQuery!
 You can make your own levels!
 Made using python! (Snake, not language)
 No balls were harmed while making this game.
@@ -15,11 +14,13 @@ Deaf people friendly!
 Your friends will love these balls!
 I know you like when the balls move.
 Best bullethell on GitHub! (Self-Proclaimed)
-Some levels are randomly generated!
+With randomly generated levels!
 Full of eastereggs!
+Did you know you can make your own levels?
 
 Has up to 7 levels!
 Contains whopping 4 game mechanics!
+Made with SimpleQuery!
 """
 
 def randomMessage():
@@ -57,6 +58,7 @@ def getLevelBack(id):
     elif id == 26: return "You know what, fine, here is something."
     elif id == 27: return "I'll give you a special counter."
     elif id == 28: return "It will count how many times you've tried it."
-    elif id == 29: return "How many times you've tried getting into a level."
-    elif id == 30: return "A level that doesn't even exist."
+    elif id == 29: return "Don't know what I'm talking about?"
+    elif id == 30: return "I'm taking about getting into a level."
+    elif id == 31: return "A level that doesn't even exist."
     else: return "Fine here it is: "+str(id)
