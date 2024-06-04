@@ -26,7 +26,7 @@ Ignore the console window popping up and wait for the tkinter window to open.<br
 Enjoy playing! You can get more insights on how to play in-game by pressing `H` to open help, or by simply reading the key binds at the bottom of the screen.
 <br><br>
 # HOW TO CREATE CUSTOM LEVELS?
-**!!! NEW WAY COMING: THERE WILL SOON BE A LEVEL EDITOR IN-GAME !!!**  
+**!!! NEW WAY COMING: THE IN-GAME LEVEL EDITOR WILL SOON BE ABLE TO EXPORT LEVELS !!!**  
 *Old way:*  
 ### Step 1: Open `gamedata` folder
 This folder is located in the same directory as `run.py`. Inside, you can find `levels.py`, which stores nearly all the level data, except for non-random levels, whose data is located in `_leveldata.py`.
